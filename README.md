@@ -118,6 +118,51 @@ git clone https://github.com/beniroquai/ImSwitchConfig
 
 Then inside the config file speficy the `.json` file that describes your setup and add `HistoScan` to the available modules
 
+
+
+#### Control ImSwithc via Jupyter notebook
+
+You can access most of the functions from ImSwitch via the fastapi REST-API by entering http://localhost:8000/docs in the browser. You will find a list of functions that can be called similarly to the ImSripting.
+There is a first draft for a library that wraps this into Python code called **imswitchclient**. You can install it:
+
+```
+pip install imswitchclient
+pip install zeroconf
+```
+
+and then call functions:
+
+```py
+#%%
+import imswitchclient.ImSwitchClient as imc
+
+# Instantiate the ImSwitchClient
+client = imc.ImSwitchClient()
+#%%
+# Test the get_positioner_names method
+positioner_names = client.get_positioner_names()
+print("Positioner Names:", positioner_names)
+#%%
+#
+# Test the move_positioner method
+positioner_name = positioner_names[0]
+axis = "X"
+dist = 1000
+is_absolute = True
+is_blocking = False
+
+response = client.move_positioner(positioner_name, axis, dist, is_absolute, is_blocking)
+print("Move Positioner Response:", response)
+
+#%%
+# Test the snap_numpy_to_fastapi method
+image_array = client.snap_numpy_to_fastapi()
+print("Image Array Shape:", image_array.shape)
+```
+
+Only a very small set of functions is interfaced so far. Help to add more here:
+https://github.com/openUC2/imswitchclient/
+
 #### Potentially working OME.TIFF implementation for ASHLAR
 
 

@@ -50,6 +50,11 @@ Secondary goals include achieving lossless image generation, implementing fluore
 
 ## Current State: Building the Prototype
 
+
+*This is the current setup for the XYZ slide-scanning setup based on the UC2 system.*
+![](IMAGES/WhatsApp Image 2023-07-07 at 10.27.11.jpeg)
+
+
 The project is currently focused on building the prototype of the slide scanner. The UC2-based microscope, named "Jordiscope," serves as the foundation for this project. The microscope features XYZ-stage scanning with micrometer precision, an RGB camera (HIK Vision), a 20x objective lens with 0.45NA, LED illumination in Köhler configuration, and a motorized focus mechanism.
 
 The prototype development will involve integrating the microscope with additional components and developing the necessary software to achieve the project's goals. The team will continue working on refining the hardware and software to create a functional and efficient open-source slide scanner.
@@ -193,6 +198,11 @@ Then inside the config file speficy the `.json` file that describes your setup a
         for region in range(shape[0]):
             write_memmapped_tiff(fpath, np.random.randint(0, 2 ** 12, shape[1:], dtype=dtype), region, dtype)
 ```
+
+
+*This is how it may look like in the GUI:*
+![](./IMAGES/WhatsApp Image 2023-07-07 at 10.27.11.jpeg)
+
 
 ## Safety
 
